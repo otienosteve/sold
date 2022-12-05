@@ -21,7 +21,8 @@ test:
   database: db/test.sqlite3
 
 production:
-   <<: *default
-  database: mysite_production
-  username: mysite
-  password: <%= ENV['MYSITE_DATABASE_PASSWORD'] %>
+  <<: *default
+  url: <%=ENV["postgresql://${{ PGUSER }}:${{ PGPASSWORD }}@${{ PGHOST }}:${{ PGPORT }}/${{ PGDATABASE }}"]%>
+  database: railwayapp_production
+  username: railwayapp
+  password: <%=["RAILWAYAPP_DATABASE_PASSWORD"]%>
